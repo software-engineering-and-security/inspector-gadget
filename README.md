@@ -1,8 +1,8 @@
 # What is inspector gadget?
 
 Inspector-gadget (a.k.a. PSHAPE - Practical Support for Half-Automated Program Exploitation) 
-is an open source tool  which  assists  analysts  in  exploit  development.  
-It discovers gadgets, chains gadgets together, and ensures that side effects
+is an open source tool  which  assists  analysts  in  exploit  development.  It 
+discovers gadgets, chains gadgets together, and ensures that side effects
 such  as  register  dereferences  do  not  crash  the  program.  
 
 It relies on the notion of gadget summaries , a compact representation
@@ -41,9 +41,9 @@ Note: you may have to update PYTHONPATH by adding /path/to/z3.git/build/
 
 4) pefile
 ```console
-git clone https://github.com/erocarrera/pefile
-setup.py build
-setup.py install
+$ git clone https://github.com/erocarrera/pefile
+$ setup.py build
+$ setup.py install
 ```
 
 5) pyelftools
@@ -60,10 +60,11 @@ setup.py install
 # Output
 
 Inspector-gadget produces four files:
-filename.pkl is a blob containing all discovered gadgets. It can be read by Inspector-gadget, so gadget discovery has to be done only once.
-filename_all_gadgets is a textfile containing all gadgets, even the ones Inspector-gadget cannot analyse properly due to jumps etc.
-filename_gadgets is a textfile containing gadgets Inspector-gadget analyzed and uses for autochaining.
-filename_summary is a textfile containing a summary of the analysis.
+
+* **filename.pkl** is a blob containing all discovered gadgets. It can be read by Inspector-gadget, so gadget discovery has to be done only once.
+* **filename_all_gadgets** is a textfile containing all gadgets, even the ones Inspector-gadget cannot analyse properly due to jumps etc.
+* **filename_gadgets** is a textfile containing gadgets Inspector-gadget analyzed and uses for autochaining.
+* **filename_summary** is a textfile containing a summary of the analysis.
 
 
 # Usage
