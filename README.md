@@ -15,6 +15,7 @@ If you use inspector-gadget in your research, please cite the following paper:
 
 **Andreas Follner, Alexandre Bartel, Hui Peng, Yu-Chen Chang, Kyriakos Ispoglou, Mathias Payer, Eric Bodden: PSHAPE: Automatically Combining Gadgets for Arbitrary Method Execution, in Security and Trust Management Workshop (STM@ESORICS), Heraklion, Greece, 2016** 
 [\[bib\]](https://www.abartel.net/static/p/stm2016-combiningGadgets.bib.txt) [\[pdf\]](https://www.abartel.net/static/p/stm2016-combiningGadgets.pdf)
+[\[www\]](https://sites.google.com/site/exploitdevpshape/)
 
 # Requirements
 
