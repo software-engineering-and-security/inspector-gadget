@@ -71,7 +71,7 @@ Inspector-gadget produces four files:
 # Usage
 
 ```console
-$ python InspectorGadget.py <parameters>
+$ ./ig.sh <parameters>
 ```
 * -b path and name of the binary (we support ELF and PE for now)
 * -maxlen maximum length of gadgets (in instructions)
@@ -86,12 +86,12 @@ $ python InspectorGadget.py <parameters>
 # Examples
 
 ```console
-$ python InspectorGadget.py -b /usr/bin/comm -maxlen 10 -arg 3 -o /output/dir/
+$ ./ig.sh -b /usr/bin/comm -maxlen 10 -arg 3 -o /output/dir/
 ```
 This finds all gadgets that contain up to 10 instructions in file "comm" stored in /usr/bin and creates a chain to initialize rdi, rsi, and rcx.
 
 ```console
-$ python InspectorGadget.py -b /usr/bin/comm.pkl -arg 4 -o /output/dir/
+$ ./ig.sh -b /usr/bin/comm.pkl -arg 4 -o /output/dir/
 ```
 Uses the file generated in the previous step (comm.pkl), so gadget discovery is skipped and a chain to initialize rdi, rsi, rcx, and rdx is generated.
 
