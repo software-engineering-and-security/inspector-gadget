@@ -95,5 +95,39 @@ $ ./ig.sh -b ./input/libc-2.28.so -maxlen 10 -arg 2 -o ./output/ -p 20
 This finds all gadgets that contain up to 10 instructions in file "libc-2.28.so" stored in ./input/ and creates a chain to initialize rdi and rsi.
 Running it the first time takes a long time to construct the gadgets.
 Running the exact some command a second time will be much faster (the gadgets are stored on the disk the first time).
+The output should look like this:
 
+```console
+$ ./ig.sh -b ./input/libc-2.28.so -maxlen 10 -arg 2 -o ./output/dir/  -p 20                                                                                            
+Number of processes:  20
+[+] Starting inspector gadget...
+[+] Target binary   : '/home/user/inspector-gadget/input/libc-2.28.so'
+[+] Output directory: '/home/user/inspector-gadget/output/dir'
+[+] Reading gadgets from existing pkl file '/home/user/inspector-gadget/output/dir/libc-2.28.so.pkl'
+[+] Good gadgets #: 63803
+[+] Grading gadgets...
+[+] Goodgadgets: 63803
+[+] Revising gadget types...
+[+] Goodgadgets: 63803
+[+] goodloads: 13827
+[+] bestloads: 23123
+[+] Using the following gadgets:
+   rdi: ['pop rdi', 'neg eax', 'ret ']@849065
+   rsi: ['pop rsi', 'sbb dh, dh', 'ret ']@1056903
+   rcx: ['pop rcx', 'pop rbx', 'ret ']@919434
+   rdx: ['pop rdx', 'pop rbx', 'ret ']@1002156
+   r8 : ['pop r8', 'sete al', 'pop rbx', 'movzx eax, al', 'ret ']@1185167
+   r9 : ['mov r9, qword ptr [rsp + 0x30]', 'mov r8, qword ptr [rsp + 0x28]', 'mov rdi, qword ptr [rsp + 0x20]', 'mov rsi, qword ptr [rsp + 0x18]', 'mov rdx, qword ptr [rsp + 0x10]', 'mov rcx, qword ptr [rsp + 8]', 'mov rax, qword ptr [rsp]', 'add rsp, 0x38', 'ret ']@1033972
+[+] Argument #: 2
+[+] Trying permutation  0
+  success
+[+] 0xcf4a9:    pop rdi ; neg eax ; ret  ; 
+[+] 0x102087:   pop rsi ; sbb dh, dh ; ret  ; 
+---------------------
+[+] Dereferenced registers:
+  ['rsp']
+[+] Postconditions:
+  ['put(rsi) = load(8 + get(rsp))', 'put(rdi) = load(get(rsp))']
+---------------------
+```
 
