@@ -18,9 +18,10 @@
 # License along with this program.  If not, see
 # <http://www.gnu.org/licenses/lgpl-2.1.html>.
 #
+# ex: ./ig.sh -b ./input/comm -maxlen 10 -arg 2 -o ./output/dir/
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 export PYTHONPATH=$PYTHONPATH:$SCRIPT_DIR
-python "${SCRIPT_DIR}/inspectorgadget/InspectorGadget.py" "$@"
+python3 "${SCRIPT_DIR}/inspectorgadget/InspectorGadget.py" "$@"
 
