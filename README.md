@@ -19,21 +19,26 @@ If you use inspector-gadget in your research, please cite the following paper:
 
 # Requirements
 
+0) python3
+```console
+# apt-get install python3
+```
+
 1) pyvex: 
 ```console
-# pip install pyvex
+# pip3 install pyvex
 ```
 
 2) capstone: 
 ```console
-# apt-get install python-capstone
+# apt-get install python3-capstone
 ```
 
 3) z3
 ```console
 $ git clone https://github.com/Z3Prover/z3
 $ python scripts/mk_make.py --python
-$ ./configure --prefix=$HOME/mylibs/
+$ ./configure --python --prefix=$HOME/mylibs/
 $ cd build
 $ make
 # sudo make install
@@ -42,20 +47,18 @@ Note: you may have to update PYTHONPATH by adding /path/to/z3.git/build/
 
 4) pefile
 ```console
-$ git clone https://github.com/erocarrera/pefile
-$ setup.py build
-$ setup.py install
+# apt-get install python3-pefile
 ```
 
 5) pyelftools
 ```console
-# apt-get install python-pyelftools
+# apt-get install python3-pyelftools
 ```
 
 
 6) dill
 ```console
-# pip install dill
+# pip3 install dill
 ```
 
 # Output
@@ -86,13 +89,11 @@ $ ./ig.sh <parameters>
 # Examples
 
 ```console
-$ ./ig.sh -b /usr/bin/comm -maxlen 10 -arg 3 -o /output/dir/
+$ mkdir ./output/
+$ ./ig.sh -b ./input/libc-2.28.so -maxlen 10 -arg 2 -o ./output/ -p 20
 ```
-This finds all gadgets that contain up to 10 instructions in file "comm" stored in /usr/bin and creates a chain to initialize rdi, rsi, and rcx.
-
-```console
-$ ./ig.sh -b /usr/bin/comm.pkl -arg 4 -o /output/dir/
-```
-Uses the file generated in the previous step (comm.pkl), so gadget discovery is skipped and a chain to initialize rdi, rsi, rcx, and rdx is generated.
+This finds all gadgets that contain up to 10 instructions in file "libc-2.28.so" stored in ./input/ and creates a chain to initialize rdi and rsi.
+Running it the first time takes a long time to construct the gadgets.
+Running the exact some command a second time will be much faster (the gadgets are stored on the disk the first time).
 
 
