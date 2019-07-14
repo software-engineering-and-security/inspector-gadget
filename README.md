@@ -61,6 +61,20 @@ Note: you may have to update PYTHONPATH by adding /path/to/z3.git/build/
 # pip3 install dill
 ```
 
+# Docker
+Alternatively, Inspector-gadget can be built with docker:
+```console
+# docker build -t inspector-gadget .
+```
+
+and run with:
+```console
+# docker run --rm -it \
+    -v /HOST/PATH/TO/FILE:/app/FILE:ro \
+    -v /HOST/PATH/TO/OUTPUT/DIR/:/app/output/ \
+    inspector-gadget -b /app/FILE [-arg ARGUMENTS] [...]
+```
+
 # Output
 
 Inspector-gadget produces four files:
@@ -91,6 +105,14 @@ $ ./ig.sh <parameters>
 ```console
 $ mkdir ./output/
 $ ./ig.sh -b ./input/libc-2.28.so -maxlen 10 -arg 2 -o ./output/ -p 20
+```
+or with docker:
+```console
+$ mkdir ./output/
+$ docker run --rm -it \
+    -v ${pwd}/input/libc-2.28.so:/app/input/libc-2.28.so:ro \
+    -v ${pwd}/output/:/app/output/ \
+    inspector-gadget -b /app/input/libc-2.28.so -maxlen 10 -arg 2 -p 20
 ```
 This finds all gadgets that contain up to 10 instructions in file "libc-2.28.so" stored in ./input/ and creates a chain to initialize rdi and rsi.
 Running it the first time takes a long time to construct the gadgets.
