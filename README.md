@@ -94,7 +94,7 @@ $ ./ig.sh -b ./input/libc-2.28.so -maxlen 10 -arg 2 -o ./output/ -p 20
 ```
 This finds all gadgets that contain up to 10 instructions in file "libc-2.28.so" stored in ./input/ and creates a chain to initialize rdi and rsi.
 Running it the first time takes a long time to construct the gadgets.
-Running the exact some command a second time will be much faster (the gadgets are stored on the disk the first time).
+Running the exact same command a second time will be much faster (the gadgets are stored on the disk the first time).
 The output should look like this:
 
 ```console
