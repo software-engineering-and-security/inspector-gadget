@@ -1,5 +1,5 @@
 import gadgetfinder.filters as filters
-import gadgetfinder.extractor as extractor
+from gadgetfinder import extractor as extractor
 import gadgetfinder.storage as storage
 #
 from capstone import *
