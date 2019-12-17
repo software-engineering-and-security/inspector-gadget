@@ -20,6 +20,7 @@ import Options
 import traceback
 import operator
 import logging
+import binascii
 
 logging.basicConfig(stream=sys.stdout, level=logging.CRITICAL)
 log = logging.getLogger(__name__)
@@ -1006,7 +1007,7 @@ def writeGadgetsToDisk(gadgets, fn):
             outfile.write(i + " ; ")
         outfile.write("\nPreconditions: %s\n" %(g.preconditions))
         outfile.write("Postconditions: %s\n" %(g.postconditions))
-        outfile.write("Bytestream: %s\n" %(g.opcodes))
+        outfile.write("Bytestream: %s\n" %(binascii.hexlify(g.opcodes)))
         outfile.write("Length: %i\n\n" %(g.length))
     
     outfile.close()

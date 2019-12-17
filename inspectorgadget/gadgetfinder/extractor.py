@@ -13,6 +13,7 @@ import dill
 import time
 import logging
 import traceback
+import binascii
 
 log = logging.getLogger(__name__)
 
@@ -432,7 +433,7 @@ def dumpGadgetsToFile(gadgets, f, spm):
             f.write(bytes("Postconditions: %s\n" %(postconds_write),"utf8"))
         else:
             f.write(bytes("Postconditions: %s\n" %(g.postconditions),"utf8"))
-        f.write(bytes("Bytestream: %s\n" %(g.opcodes), "utf8"))
+        f.write(bytes("Bytestream: %s\n" %(binascii.hexlify(g.opcodes)), "utf8"))
         f.write(bytes("Length: %i\n\n" %(g.length), "utf8"))
         
 # dump gadgets 'gg' and 'bg' to disk using file handlers
